@@ -1,0 +1,27 @@
+<span class="quote-body" ng-bind="$ctrl.quote.body"></span>
+<span class="quote-author" ng-bind="$ctrl.quote.author"></span>
+
+<div class="rating-box">
+  <ul class="rating-stars">
+    <li class="rating-star" ng-class="{filled: $ctrl.selectedRating == $index}" ng-repeat="star in [1, 2, 3, 4, 5]" ng-click='$ctrl.addRating($ctrl.quote.id, $index)'>
+      star
+    </li>
+  </ul>
+
+  <span class="final-rating" ng-bind="$ctrl.quote.rating"></span>
+</div>
+
+<div class="add-comment">
+  <form>
+    <input type="text" ng-model="$ctrl.newComment.author">
+    <input type="text" ng-model="$ctrl.newComment.body">
+    <button ng-click="$ctrl.addComment($ctrl.quote.id, $ctrl.newComment.author, $ctrl.newComment.body)"></button>
+  </form>
+</div>
+
+<div class="comments" ng-repeat="comment in $ctrl.quote.comments">
+  <div class="comment">
+    <span class="comment-author" ng-bind="comment.author"></span>
+    <span class="comment-body" ng-bind="comment.body"></span>
+  </div>
+</div>
